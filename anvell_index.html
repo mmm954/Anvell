@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anvell — Консалтинг для банков и финтеха</title>
+  <meta name="description" content="Консалтинг для банков и финтеха в Центральной Азии: стратегия, запуск новых финансовых организаций, operating model, технологические решения и PMO." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --surface: #FFFFFF;
+      --text: #1A1A18;
+      --text-secondary: #5A5A52;
+      --border: #E8E6E0;
+      --border-light: #F0EEEA;
+      --accent: #2C3E2D;
+      --accent-light: #3D5A3E;
+      --accent-bg: #EEF2EE;
+      --warm: #C4956A;
+      --warm-bg: #FBF6F1;
+      --max-w: 1120px;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-display: 'DM Serif Display', Georgia, serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ---- NAV ---- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 0.01em;
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: var(--accent) !important;
+      padding: 8px 20px;
+      border: 1.5px solid var(--accent);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--accent);
+      color: #fff !important;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      padding: 100px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-top-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.5vw, 56px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      max-width: 780px;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+    .hero-desc {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 720px;
+    }
+    .hero-fact {
+      background: var(--surface);
+      padding: 24px 28px;
+    }
+    .hero-fact-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    .hero-fact-value {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* ---- SECTIONS ---- */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-of-type {
+      border-bottom: none;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      max-width: 600px;
+    }
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
+
+    /* ---- SITUATIONS ---- */
+    .situations-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .situation-item {
+      padding: 36px 32px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      transition: background 0.25s;
+    }
+    .situation-item:hover {
+      background: var(--warm-bg);
+    }
+    .situation-item:nth-child(2n) {
+      border-right: none;
+    }
+    .situation-item:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+    .situation-num {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--warm);
+      margin-bottom: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+    .situation-item h3 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+    .situation-item p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ---- SERVICES ---- */
+    .services-list {
+      display: grid;
+      gap: 16px;
+    }
+    .service-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .service-block:hover {
+      border-color: #D0CDC6;
+    }
+    .service-header {
+      padding: 32px 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .service-header h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      line-height: 1.3;
+    }
+    .service-toggle {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+      margin-top: 2px;
+    }
+    .service-toggle svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--text-secondary);
+      transition: transform 0.3s;
+    }
+    .service-block.open .service-toggle {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .service-block.open .service-toggle svg {
+      stroke: #fff;
+      transform: rotate(45deg);
+    }
+    .service-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .service-body-inner {
+      padding: 0 36px 36px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+    }
+    .service-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .service-result {
+      background: var(--accent-bg);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .service-result-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .service-result p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--accent);
+    }
+
+    /* ---- WHY ---- */
+    .why-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .why-main p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .why-main p:last-child { margin-bottom: 0; }
+    .why-aside {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 36px;
+    }
+    .why-aside-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .why-point {
+      padding: 16px 0;
+      border-top: 1px solid var(--border-light);
+    }
+    .why-point:first-of-type { border-top: none; padding-top: 0; }
+    .why-point h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .why-point p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ---- CONTACTS ---- */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .contact-info > p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+    .contact-detail {
+      display: grid;
+      gap: 16px;
+    }
+    .contact-detail-item {
+      display: grid;
+      gap: 4px;
+    }
+    .contact-detail-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .contact-detail-value {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .contact-detail-value a {
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .contact-detail-value a:hover {
+      border-color: var(--text);
+    }
+
+    .contact-form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 36px;
+    }
+    .contact-form-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-field {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 0;
+    }
+    .form-field.full {
+      margin-bottom: 0;
+    }
+    .form-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: var(--accent);
+    }
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-submit {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+      padding: 0 28px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-submit:hover {
+      background: var(--accent-light);
+    }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      padding: 32px 0 48px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .hero-facts { grid-template-columns: 1fr; }
+      .situations-grid { grid-template-columns: 1fr; }
+      .situation-item { border-right: none; }
+      .situation-item:nth-last-child(2) { border-bottom: 1px solid var(--border); }
+      .situation-item:last-child { border-bottom: none; }
+      .service-body-inner { grid-template-columns: 1fr; }
+      .why-content { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 64px 0 56px; }
+      .section { padding: 56px 0; }
+      .hero h1 { font-size: 32px; }
+      .service-header { padding: 24px; }
+      .service-body-inner { padding: 0 24px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .situation-item { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-brand">Anvell</a>
+      <div class="nav-links">
+        <a href="#situations">Ситуации</a>
+        <a href="#services">Работа</a>
+        <a href="#why">Подход</a>
+        <a href="#contacts" class="nav-cta">Связаться</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-top-label">Казахстан / Узбекистан / Кыргызстан</span>
+      <h1>Консалтинг для банков и финтеха в Центральной Азии</h1>
+      <p class="hero-desc">Помогаем определить, куда расти дальше, как запускать новые финансовые организации и цифровые направления, какую модель управления и технологическую логику выбрать, и как удержать сложный проект под контролем.</p>
+      <div class="hero-facts">
+        <div class="hero-fact">
+          <div class="hero-fact-label">Фокус</div>
+          <div class="hero-fact-value">Стратегия, operating model, технологии, PMO</div>
+        </div>
+        <div class="hero-fact">
+          <div class="hero-fact-label">Формат</div>
+          <div class="hero-fact-value">Короткие прикладные проекты и крупные программы</div>
+        </div>
+        <div class="hero-fact">
+          <div class="hero-fact-label">Офисы</div>
+          <div class="hero-fact-value">Астана, Алматы</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITUATIONS -->
+  <section class="section" id="situations">
+    <div class="container">
+      <div class="section-label">Когда к нам обращаются</div>
+      <h2 class="section-title">Обычно это не абстрактный запрос на&nbsp;консалтинг</h2>
+      <p class="section-subtitle">А вполне конкретная задача, по которой нужно принять решение и перейти к действиям.</p>
+      <div class="situations-grid">
+
+        <div class="situation-item">
+          <div class="situation-num">01</div>
+          <h3>Нужно определить, куда расти дальше</h3>
+          <p>У компании есть несколько возможных направлений роста, но нет ясности, какие из них действительно имеют смысл с точки зрения бизнеса, модели работы и последующей реализации.</p>
+        </div>
+
+        <div class="situation-item">
+          <div class="situation-num">02</div>
+          <h3>Нужно подготовить запуск нового банка или финансовой платформы</h3>
+          <p>Есть идея запуска, но не определены модель бизнеса, ключевые функции, требования к технологии, этапность и границы ответственности между внутренней командой и внешними партнёрами.</p>
+        </div>
+
+        <div class="situation-item">
+          <div class="situation-num">03</div>
+          <h3>Нужно навести порядок в управлении</h3>
+          <p>Структура усложнилась, решения принимаются дольше, зоны ответственности пересекаются, а между бизнесом, IT и поддерживающими функциями нет достаточно ясного порядка работы.</p>
+        </div>
+
+        <div class="situation-item">
+          <div class="situation-num">04</div>
+          <h3>Нужно принять технологическое решение</h3>
+          <p>Есть несколько платформ, подрядчиков или архитектурных вариантов, но требования не зафиксированы, критерии выбора размыты, а влияние решения на процессы и бюджет не до конца понятно.</p>
+        </div>
+
+        <div class="situation-item">
+          <div class="situation-num">05</div>
+          <h3>Нужно перевести идею проекта в рабочий запуск</h3>
+          <p>Инициатива уже поддержана руководством, но проект ещё не готов к старту: не собраны требования, не определены роли, этапы, интеграции и правила управления.</p>
+        </div>
+
+        <div class="situation-item">
+          <div class="situation-num">06</div>
+          <h3>Нужно держать сложную программу под контролем</h3>
+          <p>Проект уже идёт, но в нём много потоков, зависимостей, участников и решений, и руководству нужна прозрачная картина по срокам, рискам и статусу реализации.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-label">Какую работу мы берём на себя</div>
+      <h2 class="section-title">По каждой задаче важен практический результат на&nbsp;выходе</h2>
+      <p class="section-subtitle">Не презентация с общими словами, а материалы, с которыми можно принимать решения и переходить к следующим шагам.</p>
+
+      <div class="services-list">
+
+        <div class="service-block">
+          <div class="service-header" onclick="toggleService(this)">
+            <h3>Стратегия для банков и финтеха</h3>
+            <div class="service-toggle"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
+          </div>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <div class="service-desc">Помогаем определить приоритетные направления роста, проверить их логику и связать стратегию с последующими шагами по реализации. Это может быть стратегия для банка в целом, для отдельной бизнес-линии, нового направления или цифровой инициативы.</div>
+              <div class="service-result">
+                <div class="service-result-label">Что получает клиент</div>
+                <p>Чётко сформулированные приоритеты, набор инициатив, логику их последовательности, business case по ключевым решениям и основу для управленческих решений.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-header" onclick="toggleService(this)">
+            <h3>Подготовка к запуску банка или новой финансовой платформы</h3>
+            <div class="service-toggle"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
+          </div>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <div class="service-desc">Помогаем определить целевую модель бизнеса, ключевые функции, операционную схему, требования к технологии и этапность запуска. При необходимости помогаем разделить, что стоит делать внутри, а что имеет смысл передавать партнёрам.</div>
+              <div class="service-result">
+                <div class="service-result-label">Что получает клиент</div>
+                <p>Модель запуска, перечень ключевых решений, требования к технологическому контуру, логику этапов и основу для следующего этапа реализации.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-header" onclick="toggleService(this)">
+            <h3>Operating model, governance и KPI</h3>
+            <div class="service-toggle"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
+          </div>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <div class="service-desc">Помогаем определить, как должна работать организация: кто за что отвечает, как принимаются решения, как связаны функции и по каким принципам управляется результат. Это особенно важно там, где бизнес, IT и поддерживающие функции должны работать в одной логике.</div>
+              <div class="service-result">
+                <div class="service-result-label">Что получает клиент</div>
+                <p>Целевую модель управления, распределение ролей и ответственности, governance-подход, KPI-логику и план перехода к новой модели.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-header" onclick="toggleService(this)">
+            <h3>Технологическая модель и выбор решения</h3>
+            <div class="service-toggle"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
+          </div>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <div class="service-desc">Помогаем сформулировать требования, оценить варианты, понять их влияние на процессы и организацию и подготовить базу для выбора платформы или партнёра. Это работа на стыке бизнеса, операционной модели и технологии, а не просто выбор системы по презентациям поставщиков.</div>
+              <div class="service-result">
+                <div class="service-result-label">Что получает клиент</div>
+                <p>Требования, критерии выбора, оценку вариантов и материалы, с которыми можно выходить в тендер или в переговоры с поставщиками.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-header" onclick="toggleService(this)">
+            <h3>Реализация цифровых продуктов</h3>
+            <div class="service-toggle"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
+          </div>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <div class="service-desc">Формируем стратегию и архитектуру решения, управляем реализацией и обеспечиваем достижение целей проекта. Технологическое исполнение осуществляется профильными международными партнёрами. Покрываем: цифровые банковские платформы и необанки, интернет- и мобильный банкинг, платежные сервисы и процессинг, API-интеграции, CRM и data-платформы, anti-fraud.</div>
+              <div class="service-result">
+                <div class="service-result-label">Что получает клиент</div>
+                <p>Работающий цифровой продукт, спроектированный под стратегию банка, с контролируемым бюджетом и сроками. Мы отвечаем за результат, а не только за документы.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-header" onclick="toggleService(this)">
+            <h3>PMO и сопровождение реализации</h3>
+            <div class="service-toggle"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
+          </div>
+          <div class="service-body">
+            <div class="service-body-inner">
+              <div class="service-desc">Помогаем выстроить управление программой и поддерживать его в рабочем режиме: сроки, статусы, риски, зависимости, эскалации и управленческую отчётность. Такой формат нужен там, где решение уже принято, но без сильного управления проект начинает терять темп и ясность.</div>
+              <div class="service-result">
+                <div class="service-result-label">Что получает клиент</div>
+                <p>Понятный проектный контур, прозрачность по срокам и рискам, регулярную управленческую отчётность и механизм контроля исполнения.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-label">Почему мы</div>
+      <h2 class="section-title">Не начинаем с заранее заготовленной услуги</h2>
+      <p class="section-subtitle">Для банков и финтеха внешне похожие задачи часто требуют разного подхода.</p>
+
+      <div class="why-content">
+        <div class="why-main">
+          <p>Мы смотрим на задачу сразу с нескольких сторон: бизнес-логика и экономика решения, модель работы и управления, технологические ограничения и реальность реализации. В финансовом секторе эти вопросы почти никогда не живут отдельно друг от друга. Если рассматривать их по отдельности, компания обычно получает либо правильные слова без исполнения, либо технологический проект без понятной бизнес-логики.</p>
+          <p>У нас фокус именно на банках и финтехе региона. Это важно не как географическая отметка, а как понимание контекста: как устроены решения в местных финансовых организациях, где обычно возникают реальные ограничения, как выглядит рабочая логика между акционером, руководством, бизнесом, IT, функциями контроля и внешними поставщиками.</p>
+          <p>Мы не раздуваем проект без необходимости. Если задачу можно решить короткой плотной работой с чётким результатом, именно так и стоит делать. Для клиента это означает меньше лишней активности, меньше размытых формулировок и больше шансов быстро перейти к следующим шагам.</p>
+        </div>
+        <div class="why-aside">
+          <div class="why-aside-title">Команда</div>
+          <div class="why-point">
+            <h4>Опыт в Big4 и Strategy&</h4>
+            <p>Партнёры бутика работали в PwC, Strategy& и KPMG. Знаем, как работает большой консалтинг. И знаем, что можно иначе.</p>
+          </div>
+          <div class="why-point">
+            <h4>Старшие люди на проекте</h4>
+            <p>В большой фирме проект продаёт партнёр, а делает джуниор. У нас старшие люди работают на проекте, а не над проектом.</p>
+          </div>
+          <div class="why-point">
+            <h4>Региональный контекст</h4>
+            <p>10+ лет проектов для крупнейших банков Казахстана, Узбекистана и региона. Не адаптируем западные шаблоны, а понимаем местную специфику.</p>
+          </div>
+          <div class="why-point">
+            <h4>Технологические партнёры</h4>
+            <p>Для реализации цифровых продуктов привлекаем проверенных международных партнёров. Отвечаем за архитектуру, управление и результат.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section class="section" id="contacts">
+    <div class="container">
+      <div class="section-label">Контакты</div>
+      <h2 class="section-title">Давайте обсудим задачу</h2>
+      <p class="section-subtitle">Если нужно определить направление, собрать рабочую модель, принять технологическое решение или удержать программу под контролем.</p>
+
+      <div class="contact-layout">
+        <div class="contact-info">
+          <h3>Напишите или позвоните</h3>
+          <p>Расскажите о задаче в свободной форме. Мы скажем, сможем ли помочь, за какие сроки и сколько это стоит.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email</span>
+              <span class="contact-detail-value"><a href="mailto:marcel.mukhametov@gmail.com">marcel.mukhametov@gmail.com</a></span>
+            </div>
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Телефон</span>
+              <span class="contact-detail-value"><a href="tel:+77019521789">+7 701 952 17 89</a></span>
+            </div>
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Офисы</span>
+              <span class="contact-detail-value">Астана, Алматы</span>
+            </div>
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Регион работы</span>
+              <span class="contact-detail-value">Казахстан, Узбекистан, Кыргызстан</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <h3>Или заполните форму</h3>
+          <form action="mailto:marcel.mukhametov@gmail.com" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label" for="name">Имя</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="Ваше имя" />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="company">Компания</label>
+                <input class="form-input" type="text" id="company" name="company" placeholder="Название компании" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label" for="position">Должность</label>
+                <input class="form-input" type="text" id="position" name="position" placeholder="Ваша должность" />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="name@company.com" />
+              </div>
+            </div>
+            <div class="form-field full" style="margin-bottom: 0;">
+              <label class="form-label" for="task">Задача</label>
+              <textarea class="form-input" id="task" name="task" placeholder="Опишите задачу в свободной форме"></textarea>
+            </div>
+            <button class="form-submit" type="submit">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>&copy; 2025 Anvell</span>
+      <span>Астана &middot; Алматы</span>
+    </div>
+  </footer>
+
+  <script>
+    function toggleService(header) {
+      const block = header.parentElement;
+      const body = block.querySelector('.service-body');
+      const isOpen = block.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.service-block.open').forEach(b => {
+        b.classList.remove('open');
+        b.querySelector('.service-body').style.maxHeight = '0';
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        block.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    }
+  </script>
+
+</body>
+</html>
