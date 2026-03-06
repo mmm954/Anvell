@@ -133,7 +133,6 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      max-width: 720px;
     }
     .hero-fact {
       background: var(--surface);
@@ -198,10 +197,6 @@
       background: var(--surface);
       border-bottom: 1px solid var(--border);
       border-right: 1px solid var(--border);
-      transition: background 0.25s;
-    }
-    .situation-item:hover {
-      background: var(--warm-bg);
     }
     .situation-item:nth-child(2n) {
       border-right: none;
@@ -318,11 +313,19 @@
     }
 
     /* ---- WHY ---- */
-    .why-content {
+    .why-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px;
       align-items: start;
+    }
+    .why-left .section-label { margin-bottom: 16px; }
+    .why-left .section-title { margin-bottom: 16px; }
+    .why-intro {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 32px;
     }
     .why-main p {
       font-size: 16px;
@@ -492,7 +495,7 @@
       .situation-item:nth-last-child(2) { border-bottom: 1px solid var(--border); }
       .situation-item:last-child { border-bottom: none; }
       .service-body-inner { grid-template-columns: 1fr; }
-      .why-content { grid-template-columns: 1fr; }
+      .why-layout { grid-template-columns: 1fr; }
       .contact-layout { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
@@ -549,8 +552,8 @@
   <section class="section" id="situations">
     <div class="container">
       <div class="section-label">Когда к нам обращаются</div>
-      <h2 class="section-title">Обычно это не абстрактный запрос на&nbsp;консалтинг</h2>
-      <p class="section-subtitle">А вполне конкретная задача, по которой нужно принять решение и перейти к действиям.</p>
+      <h2 class="section-title">Конкретные задачи, по которым нужно принять решение и перейти к действиям</h2>
+      <p class="section-subtitle">Не абстрактный запрос на консалтинг, а ситуация, в которой важно разобраться и начать двигаться.</p>
       <div class="situations-grid">
 
         <div class="situation-item">
@@ -636,7 +639,7 @@
 
         <div class="service-block">
           <div class="service-header" onclick="toggleService(this)">
-            <h3>Operating model, governance и KPI</h3>
+            <h3>Модель управления, распределение ответственности и KPI</h3>
             <div class="service-toggle"><svg viewBox="0 0 14 14" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
           </div>
           <div class="service-body">
@@ -705,15 +708,16 @@
   <!-- WHY -->
   <section class="section" id="why">
     <div class="container">
-      <div class="section-label">Почему мы</div>
-      <h2 class="section-title">Не начинаем с заранее заготовленной услуги</h2>
-      <p class="section-subtitle">Для банков и финтеха внешне похожие задачи часто требуют разного подхода.</p>
-
-      <div class="why-content">
-        <div class="why-main">
-          <p>Мы смотрим на задачу сразу с нескольких сторон: бизнес-логика и экономика решения, модель работы и управления, технологические ограничения и реальность реализации. В финансовом секторе эти вопросы почти никогда не живут отдельно друг от друга. Если рассматривать их по отдельности, компания обычно получает либо правильные слова без исполнения, либо технологический проект без понятной бизнес-логики.</p>
-          <p>У нас фокус именно на банках и финтехе региона. Это важно не как географическая отметка, а как понимание контекста: как устроены решения в местных финансовых организациях, где обычно возникают реальные ограничения, как выглядит рабочая логика между акционером, руководством, бизнесом, IT, функциями контроля и внешними поставщиками.</p>
-          <p>Мы не раздуваем проект без необходимости. Если задачу можно решить короткой плотной работой с чётким результатом, именно так и стоит делать. Для клиента это означает меньше лишней активности, меньше размытых формулировок и больше шансов быстро перейти к следующим шагам.</p>
+      <div class="why-layout">
+        <div class="why-left">
+          <div class="section-label">Почему мы</div>
+          <h2 class="section-title">Не начинаем с заранее заготовленной услуги</h2>
+          <p class="why-intro">Для банков и финтеха внешне похожие задачи часто требуют разного подхода.</p>
+          <div class="why-main">
+            <p>Мы смотрим на задачу сразу с нескольких сторон: бизнес-логика и экономика решения, модель работы и управления, технологические ограничения и реальность реализации. В финансовом секторе эти вопросы почти никогда не живут отдельно друг от друга. Если рассматривать их по отдельности, компания обычно получает либо правильные слова без исполнения, либо технологический проект без понятной бизнес-логики.</p>
+            <p>У нас фокус именно на банках и финтехе региона. Это важно не как географическая отметка, а как понимание контекста: как устроены решения в местных финансовых организациях, где обычно возникают реальные ограничения, как выглядит рабочая логика между акционером, руководством, бизнесом, IT, функциями контроля и внешними поставщиками.</p>
+            <p>Мы не раздуваем проект без необходимости. Если задачу можно решить короткой плотной работой с чётким результатом, именно так и стоит делать. Для клиента это означает меньше лишней активности, меньше размытых формулировок и больше шансов быстро перейти к следующим шагам.</p>
+          </div>
         </div>
         <div class="why-aside">
           <div class="why-aside-title">Команда</div>
